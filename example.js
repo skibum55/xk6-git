@@ -4,7 +4,7 @@ export function setup() {}
 
 export default function () {
   // console.log(git.plainclone("",""))
-  console.log(git.plainClone("","ssh://git@mlocalhost:2222/xk6-git"))
+  console.log(git.plainClone("","ssh://git@localhost:2222/xk6-git","/home/codespace/.ssh/gitlab_rsa"))
 }
 
 // export function teardown () {
