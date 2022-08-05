@@ -22,7 +22,7 @@ type GIT struct{}
 // }
 
 // Clone gets a git repository
-func (*GIT) PlainClone(directory string, url string) error {
+func (*GIT) PlainClone(directory string, url string, privateKeyFile string) error {
 	if len(directory) == 0 {
 		directory = "~"
 	}
@@ -30,7 +30,9 @@ func (*GIT) PlainClone(directory string, url string) error {
 		url = "ssh://git@localhost/test_repo.git"
 	}
 
-	var privateKeyFile = "/home/codespace/.ssh/gitlab_rsa"
+	if len(privateKeyFile) == 0 {
+		privateKeyFile = "/home/codespace/.ssh/gitlab_rsa"
+	}
 	var password string
 	publicKeys, err1 := ssh.NewPublicKeysFromFile("git", privateKeyFile, password)
 	if err1 != nil {
