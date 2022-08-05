@@ -19,7 +19,7 @@ func init() {
 // GIT is the k6 extension for a Git client.
 type GIT struct{}
 
-/ // Repository is the GIT object we'll start with.
+// Repository is the GIT object we'll start with.
 // type Repository struct {
 // 	Storer storage.Storer
 // }
