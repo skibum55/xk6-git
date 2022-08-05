@@ -4,7 +4,7 @@ import (
     "context"
     "time"
 
-     git "gopkg.in/go-git/go-git"
+     git "github.com/go-git/go-git"
 
     "go.k6.io/k6/js/common"
     "go.k6.io/k6/js/modules"
