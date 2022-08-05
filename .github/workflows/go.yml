@@ -22,5 +22,6 @@ jobs:
       run: go install go.k6.io/xk6/cmd/xk6@latest
 
     - name: Test
+      env: CGO_ENABLED=1
       run: xk6 build --with github.com/skibum55/xk6-git
 
