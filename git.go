@@ -1,6 +1,9 @@
 package git
 
 import (
+	"os"
+	"path"
+
 	"github.com/go-git/go-git/v5"
 	"github.com/go-git/go-git/v5/plumbing/transport/ssh"
 
@@ -31,8 +34,10 @@ func (*GIT) PlainClone(directory string, url string, privateKeyFile string) erro
 	}
 
 	if len(privateKeyFile) == 0 {
-		privateKeyFile = "/home/codespace/.ssh/gitlab_rsa"
+		home := os.Getenv("HOME")
+		privateKeyFile = path.Join(home, ".ssh/id_rsa")
 	}
+
 	var password string
 	publicKeys, err1 := ssh.NewPublicKeysFromFile("git", privateKeyFile, password)
 	if err1 != nil {
