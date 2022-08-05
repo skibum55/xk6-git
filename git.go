@@ -2,6 +2,7 @@ package git
 
 import (
 	git "github.com/go-git/go-git/v5"
+	"github.com/go-git/go-git/v5/plumbing/transport/ssh"
 
 	"go.k6.io/k6/js/modules"
 )
@@ -9,7 +10,7 @@ import (
 // Register the extension on module initialization, available to
 // import from JS as "k6/x/git".
 func init() {
-	modules.Register("k6/x/git", new(Git))
+	modules.Register("k6/x/git", new(GIT))
 }
 
 // GIT is the k6 extension for a Git client.
@@ -20,12 +21,31 @@ type GIT struct{}
 // 	Storer storage.Storer
 // }
 
-var url = "ssh://git@localhost/test_repo.git"
-var directory = "~"
-var publicKeys = "~/.ssh/gitlab_rsa"
-
 // Clone gets a git repository
-func (*GIT) PlainClone(directory, false, options) *git.PlainClone {
+func (*GIT) PlainClone(directory string, url string) error {
+	if directory == "" {
+		directory = "~"
+	}
+	if url == "" {
+		url = "ssh://git@localhost/test_repo.git"
+	}
+
+	var privateKeyFile = "~/.ssh/gitlab_rsa"
+	var password string
+	publicKeys, err := ssh.NewPublicKeysFromFile("git", privateKeyFile, password)
+	if err != nil {
+		return err
+	}
+	_, err = git.PlainClone(directory, false, &git.CloneOptions{
+		URL:             url,
+		Auth:            publicKeys,
+		InsecureSkipTLS: true,
+	})
+	if err != nil {
+		return err
+	} else {
+		return err
+	}
 }
 
 //CheckIfError(err)
