@@ -1,4 +1,4 @@
-package redis
+package git
 
 import (
     "context"
