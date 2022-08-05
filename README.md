@@ -1,2 +1,2 @@
 # xk6-git
-Load testing extension for GIt with K6
+Load testing extension for GIT with K6
