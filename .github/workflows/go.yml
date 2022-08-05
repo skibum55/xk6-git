@@ -8,7 +8,6 @@ on:
     
 env: 
   CGO_ENABLED: 1
-  GO111MODULE: off
 
 jobs:
 
