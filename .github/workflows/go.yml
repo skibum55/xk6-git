@@ -22,5 +22,5 @@ jobs:
       run: go install go.k6.io/xk6/cmd/xk6@latest
 
     - name: Test
-      run: xk6 build v0.39.0 --with github.com/skibum55/xk6-git=$GITHUB_WORKSPACE
+      run: xk6 build v0.39.0 --with github.com/skibum55/xk6-git
 
