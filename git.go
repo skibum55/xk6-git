@@ -43,4 +43,4 @@ func (c *Client) Get(key string) (string, error) {
         return "", err
     }
     return res, nil
-}g
+}
