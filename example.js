@@ -1,12 +1,7 @@
 import git from 'k6/x/git';
 
-export function setup() {}
-
 export default function () {
-  // console.log(git.plainclone("",""))
-  console.log(git.plainClone("","ssh://git@localhost:2222/xk6-git","/home/codespace/.ssh/gitlab_rsa"))
+  // console.log("Debug test")
+  // console.log(git.plainClone("","","somewhere"))
+  console.log(git.plainClone("","ssh://git@0.0.0.0:22222/xk6-git","/home/codespace/.ssh/id_rsa"))
 }
-
-// export function teardown () {
-//   git.del(client,"foo")
-// }
