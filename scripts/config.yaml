@@ -1,0 +1,8 @@
+authorized_keys_path: ~/.ssh/authorized_keys
+host_private_key_path: ~/.ssh/id_ed25519
+port: 22222
+proxy_protocol: true
+repo_dir: "/workspaces"
+shell_path: "/usr/local/bin/git-shell"
+shutdown_timeout: 30s
+tcp_health_check_port: 5000
