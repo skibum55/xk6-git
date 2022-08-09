@@ -5,6 +5,7 @@ export default function () {
   var folder = "myfolder" + r
   console.log(folder)
   // console.log("Debug test")
-  // console.log(git.plainCloneHTTP(folder,"https://github.com/dgzlopes/xk6-redis.git","myapikey"))
-  console.log(git.plainCloneSSH(folder,"ssh://git@0.0.0.0:22222/xk6-git","/home/codespace/.ssh/id_rsa"))
+  //  pick one or both of the methods below depending on your use case
+   console.log(git.plainCloneHTTP(folder,"https://github.com/dgzlopes/xk6-redis.git","myapikey"))
+  //console.log(git.plainCloneSSH(folder,"ssh://git@0.0.0.0:22222/xk6-git","/home/codespace/.ssh/id_rsa"))
 }

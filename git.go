@@ -25,7 +25,8 @@ type GIT struct{}
 // 	Storer storage.Storer
 // }
 
-// Clone gets a git repository
+// Clone gets a git repository using ssh and a private key
+// exported function for javascript - uppercase first letter
 func (*GIT) PlainCloneSSH(directory string, url string, privateKeyFile string) error {
 	if len(directory) == 0 {
 		directory = "~"
@@ -56,6 +57,8 @@ func (*GIT) PlainCloneSSH(directory string, url string, privateKeyFile string) e
 	}
 }
 
+// Clone gets a git repository using ssh and a private key
+// exported function for javascript - uppercase first letter
 func (*GIT) PlainCloneHTTP(directory string, url string, token string) error {
 	if len(directory) == 0 {
 		directory = "~"
