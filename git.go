@@ -5,6 +5,7 @@ import (
 	"path"
 
 	"github.com/go-git/go-git/v5"
+	"github.com/go-git/go-git/v5/plumbing/transport/http"
 	"github.com/go-git/go-git/v5/plumbing/transport/ssh"
 
 	"go.k6.io/k6/js/modules"
@@ -70,7 +71,9 @@ func (*GIT) PlainCloneHTTP(directory string, url string, token string) error {
 		Auth: &http.BasicAuth{
 			Username: "xk6-git", // yes, this can be anything except an empty string
 			Password: token,
-		})
+		},
+		URL: url,
+	})
 	if err != nil {
 		return err
 	} else {
