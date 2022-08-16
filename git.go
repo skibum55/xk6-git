@@ -49,6 +49,7 @@ func (*GIT) PlainCloneSSH(directory string, url string, privateKeyFile string) e
 		URL:             url,
 		Auth:            publicKeys,
 		InsecureSkipTLS: true,
+		Progress:        os.Stdout,
 	})
 	if err != nil {
 		return err
@@ -75,7 +76,8 @@ func (*GIT) PlainCloneHTTP(directory string, url string, token string) error {
 			Username: "xk6-git", // yes, this can be anything except an empty string
 			Password: token,
 		},
-		URL: url,
+		URL:      url,
+		Progress: os.Stdout,
 	})
 	if err != nil {
 		return err
