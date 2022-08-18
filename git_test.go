@@ -9,6 +9,7 @@ func TestGIT_PlainCloneSSH(t *testing.T) {
 		directory      string
 		url            string
 		privateKeyFile string
+		skiptls        bool
 	}
 	tests := []struct {
 		name    string
@@ -21,7 +22,7 @@ func TestGIT_PlainCloneSSH(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			g := &GIT{}
-			if err := g.PlainCloneSSH(tt.args.directory, tt.args.url, tt.args.privateKeyFile); (err != nil) != tt.wantErr {
+			if err := g.PlainCloneSSH(tt.args.directory, tt.args.url, tt.args.privateKeyFile, tt.args.skiptls); (err != nil) != tt.wantErr {
 				t.Errorf("GIT.PlainCloneSSH() error = %v, wantErr %v", err, tt.wantErr)
 			}
 		})
@@ -33,6 +34,7 @@ func TestGIT_PlainCloneHTTP(t *testing.T) {
 		directory string
 		url       string
 		token     string
+		skiptls   bool
 	}
 	tests := []struct {
 		name    string
@@ -45,7 +47,7 @@ func TestGIT_PlainCloneHTTP(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			g := &GIT{}
-			if err := g.PlainCloneHTTP(tt.args.directory, tt.args.url, tt.args.token); (err != nil) != tt.wantErr {
+			if err := g.PlainCloneHTTP(tt.args.directory, tt.args.url, tt.args.token, tt.args.skiptls); (err != nil) != tt.wantErr {
 				t.Errorf("GIT.PlainCloneHTTP() error = %v, wantErr %v", err, tt.wantErr)
 			}
 		})

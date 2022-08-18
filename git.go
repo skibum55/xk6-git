@@ -27,7 +27,7 @@ type GIT struct{}
 
 // Clone gets a git repository using ssh and a private key
 // exported function for javascript - uppercase first letter
-func (*GIT) PlainCloneSSH(directory string, url string, privateKeyFile string) error {
+func (*GIT) PlainCloneSSH(directory string, url string, privateKeyFile string, skiptls bool) error {
 	if len(directory) == 0 {
 		directory = "~"
 	}
@@ -48,8 +48,7 @@ func (*GIT) PlainCloneSSH(directory string, url string, privateKeyFile string) e
 	_, err := git.PlainClone(directory, false, &git.CloneOptions{
 		URL:             url,
 		Auth:            publicKeys,
-		InsecureSkipTLS: true,
-		Progress:        os.Stdout,
+		InsecureSkipTLS: skiptls,
 	})
 	if err != nil {
 		return err
@@ -60,7 +59,7 @@ func (*GIT) PlainCloneSSH(directory string, url string, privateKeyFile string) e
 
 // Clone gets a git repository using ssh and a private key
 // exported function for javascript - uppercase first letter
-func (*GIT) PlainCloneHTTP(directory string, url string, token string) error {
+func (*GIT) PlainCloneHTTP(directory string, url string, token string, skiptls bool) error {
 	if len(directory) == 0 {
 		directory = "~"
 	}
@@ -76,8 +75,9 @@ func (*GIT) PlainCloneHTTP(directory string, url string, token string) error {
 			Username: "xk6-git", // yes, this can be anything except an empty string
 			Password: token,
 		},
-		URL:      url,
-		Progress: os.Stdout,
+		URL:             url,
+		Progress:        os.Stdout,
+		InsecureSkipTLS: skiptls,
 	})
 	if err != nil {
 		return err
