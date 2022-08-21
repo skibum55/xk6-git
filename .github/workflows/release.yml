@@ -3,7 +3,9 @@ name: Release
 on:
   push:
     tags:
-      - 'releases/**'
+      - '*'
+    branches: 
+    - 'releases/**'
 
 jobs:
 
