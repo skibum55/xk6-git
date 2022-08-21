@@ -52,7 +52,7 @@ func (*GIT) PlainCloneSSH(directory string, url string, privateKeyFile string, s
 		// ReferenceName:     "",
 		// SingleBranch:      false,
 		// NoCheckout:        false,
-		Depth: 1,
+		Depth: depth,
 		// RecurseSubmodules: 0,
 		// Progress:          nil,
 		// Tags:              0,
@@ -86,7 +86,7 @@ func (*GIT) PlainCloneHTTP(directory string, url string, token string, skiptls b
 		},
 		URL:             url,
 		Progress:        os.Stdout,
-		Depth:           1,
+		Depth:           depth,
 		InsecureSkipTLS: skiptls,
 	})
 	if err != nil {
