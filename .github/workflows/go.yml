@@ -23,15 +23,21 @@ jobs:
     - name: Set up Go
       uses: actions/setup-go@v3
       with:
-        go-version: 1.18        
+        go-version: 1.18  
+
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v2
+      with:
+      languages: go, javascript      
 
     - name: Install XK6
       run:  go install go.k6.io/xk6/cmd/xk6@latest # && go install github.com/go-git/go-git/v5@latest
 
     - name: Build
-      
       run: xk6 build --with github.com/skibum55/xk6-git
 
     - name: Test
-
       run: go test
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v2
