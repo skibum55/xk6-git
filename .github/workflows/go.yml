@@ -28,7 +28,7 @@ jobs:
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v2
       with:
-      languages: go, javascript
+        languages: go, javascript
 
     - name: Install XK6
       run:  go install go.k6.io/xk6/cmd/xk6@latest # && go install github.com/go-git/go-git/v5@latest
